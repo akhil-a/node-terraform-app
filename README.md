@@ -1,4 +1,4 @@
-# AWS Infrastructure Setup
+# NodeJs Application with Terraform and AWS
 
 ## Overview
 This repository contains AWS infrastructure setup script using Terraform. The script provisions a Virtual Private Cloud (VPC) with public and private subnets, security groups, NAT and Internet Gateways, EC2 instances, and an Application Load Balancer (ALB) to host a nodeJS website with MySQL database and stores statefiles in S3 bucket.
