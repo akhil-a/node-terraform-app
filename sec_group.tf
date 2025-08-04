@@ -80,13 +80,13 @@ resource "aws_security_group_rule" "alb-ingress-rules" {
 }
 
 resource "aws_security_group_rule" "alb-egress-rules" {
-  count             = length(var.server_ports)
-  type              = "egress"
-  from_port         = var.server_ports[count.index]
-  to_port           = var.server_ports[count.index]
-  protocol          = "tcp"
+  count                    = length(var.server_ports)
+  type                     = "egress"
+  from_port                = var.server_ports[count.index]
+  to_port                  = var.server_ports[count.index]
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.web_sg.id
-  security_group_id = aws_security_group.alb_sg.id
+  security_group_id        = aws_security_group.alb_sg.id
 }
 
 

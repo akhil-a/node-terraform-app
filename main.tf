@@ -15,8 +15,8 @@ resource "aws_instance" "bastion_host" {
 resource "aws_instance" "db_server" {
   ami                    = var.ami_id
   key_name               = "mumbai-key"
-  instance_type          = var.instance_type 
-  subnet_id     = aws_subnet.private_subnets[1].id
+  instance_type          = var.instance_type
+  subnet_id              = aws_subnet.private_subnets[1].id
   vpc_security_group_ids = [aws_security_group.db_sg.id]
   user_data              = file("db_userdata.sh")
 
@@ -26,11 +26,11 @@ resource "aws_instance" "db_server" {
 }
 
 resource "aws_instance" "nodejsapp" {
-  count = 2
+  count                  = 2
   ami                    = var.ami_id
   key_name               = "mumbai-key"
   instance_type          = "t2.micro"
-  subnet_id     = aws_subnet.private_subnets[count.index].id
+  subnet_id              = aws_subnet.private_subnets[count.index].id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   user_data              = file("node_app_userdata.sh")
 
@@ -65,7 +65,7 @@ resource "aws_lb_target_group" "app_tg" {
   health_check {
     path                = "/health"
     protocol            = "HTTP"
-    port ="8080"
+    port                = "8080"
     matcher             = "200"
     interval            = 30
     timeout             = 5
@@ -75,10 +75,10 @@ resource "aws_lb_target_group" "app_tg" {
 }
 
 resource "aws_lb_target_group_attachment" "app_attachment" {
-  count              = 2
-  target_group_arn   = aws_lb_target_group.app_tg.arn
-  target_id          = aws_instance.nodejsapp[count.index].id
-  port               = 8080
+  count            = 2
+  target_group_arn = aws_lb_target_group.app_tg.arn
+  target_id        = aws_instance.nodejsapp[count.index].id
+  port             = 8080
 }
 
 resource "aws_lb_listener" "app_listener" {
