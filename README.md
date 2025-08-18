@@ -1,6 +1,6 @@
 # NodeJs Application with Terraform and AWS
 
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-dark.svg)](https://sonarcloud.io/summary/new_code?id=akhil-a_node-terraform-app)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=akhil-a_node-terraform-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=akhil-a_node-terraform-app)
 
 ## Overview
 This repository contains AWS infrastructure setup script using Terraform. The script provisions a Virtual Private Cloud (VPC) with public and private subnets, security groups, NAT and Internet Gateways, EC2 instances, and an Application Load Balancer (ALB) to host a nodeJS website with MySQL database and stores statefiles in S3 bucket.
